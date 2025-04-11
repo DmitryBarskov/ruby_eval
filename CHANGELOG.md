@@ -4,6 +4,11 @@ All notable changes to the "ruby-eval" extension will be documented in this file
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+## [0.0.4]
+
+- Add ability to clear annotations
+- Add logging
+
 ## [0.0.3]
 
 - Fix image display in README

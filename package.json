@@ -2,7 +2,7 @@
   "name": "ruby-eval",
   "displayName": "Ruby Eval",
   "description": "Ruby in vs code for web",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "publisher": "DmitryBarskov",
   "license": "MIT",
   "repository": {
@@ -20,7 +20,11 @@
     "commands": [
       {
         "command": "ruby-eval.runRuby",
-        "title": "Annotate Ruby script"
+        "title": "Annotate (evaluate) Ruby script"
+      },
+      {
+        "command": "ruby-eval.clearDecorations",
+        "title": "Clear Ruby script annotations (decorations)"
       }
     ]
   },
