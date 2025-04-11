@@ -2,7 +2,7 @@
   "name": "ruby-eval",
   "displayName": "Ruby Eval",
   "description": "Ruby in vs code for web",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "publisher": "DmitryBarskov",
   "license": "MIT",
   "repository": {
