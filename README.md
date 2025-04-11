@@ -8,7 +8,7 @@ Web extension (works in vscode.dev and github.dev) to evaluate ruby scripts.
 - Works in browser (I created it for iPad)
 - Supports stdout
 
-![Feature demonstration](./assets/feature.png)
+![Feature demonstration](./images/feature.png)
 
 ## Requirements
 
