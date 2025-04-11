@@ -5,7 +5,7 @@ Web extension (works in vscode.dev and github.dev) to evaluate ruby scripts.
 ## Features
 
 - Evaluates top level statements
-- Works in browser (I created it for iPad)
+- Works in browser (not in Safari/iOS)
 - Supports stdout
 
 ![Feature demonstration](./images/feature.png)
