@@ -1,8 +1,11 @@
 {
-  "name": "ruby_eval",
+  "name": "ruby-eval",
   "displayName": "Ruby Eval",
   "description": "Ruby in vs code for web",
   "version": "0.0.1",
+  "repository": {
+    "url": "https://github.com/DmitryBarskov/ruby_eval"
+  },
   "engines": {
     "vscode": "^1.99.0"
   },
@@ -14,7 +17,7 @@
   "contributes": {
     "commands": [
       {
-        "command": "ruby_eval.runRuby",
+        "command": "ruby-eval.runRuby",
         "title": "Annotate Ruby script"
       }
     ]

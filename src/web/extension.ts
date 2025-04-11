@@ -95,7 +95,7 @@ export async function activate(context: vscode.ExtensionContext) {
 	const vm = await initializeRubyVM();
 	const outputChannel = vscode.window.createOutputChannel("Ruby Output");
 
-	const disposable = vscode.commands.registerCommand('ruby_eval.runRuby', async () => {
+	const disposable = vscode.commands.registerCommand('ruby-eval.runRuby', async () => {
 		const editor: vscode.TextEditor | undefined = vscode.window.activeTextEditor;
 
 		if (!editor) {
