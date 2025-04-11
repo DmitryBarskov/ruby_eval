@@ -95,6 +95,8 @@ export async function activate(context: vscode.ExtensionContext) {
 	const vm = await initializeRubyVM();
 	const outputChannel = vscode.window.createOutputChannel("Ruby Output");
 
+	let decorationType: vscode.TextEditorDecorationType | null = null;
+
 	const disposable = vscode.commands.registerCommand('ruby-eval.runRuby', async () => {
 		const editor: vscode.TextEditor | undefined = vscode.window.activeTextEditor;
 
@@ -103,6 +105,10 @@ export async function activate(context: vscode.ExtensionContext) {
 			return;
 		}
 
+		if (decorationType != null) {
+			editor.setDecorations(decorationType, []);
+			decorationType.dispose();
+		}
 		const decorations: vscode.DecorationOptions[] = [];
 
 		for await (const { start, end, source } of statements(editor.document.getText())) {
@@ -110,7 +116,7 @@ export async function activate(context: vscode.ExtensionContext) {
 				editor.document.positionAt(start),
 				editor.document.positionAt(end)
 			)
-			const { result, output } = evalInVm(vm, source);
+			const { result, output } = evalInVm(vm, `(${source}).inspect`);
 			const contentText = ` => ${result}`;
 			decorations.push({
 				range, renderOptions: {
@@ -126,7 +132,9 @@ export async function activate(context: vscode.ExtensionContext) {
 			}
 		}
 
-		const decorationType = vscode.window.createTextEditorDecorationType({});
+		decorationType = vscode.window.createTextEditorDecorationType({
+			isWholeLine: true,
+		});
 		editor.setDecorations(decorationType, decorations);
 	});
 
