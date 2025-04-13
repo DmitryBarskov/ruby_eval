@@ -2,7 +2,7 @@
   "name": "ruby-eval",
   "displayName": "Ruby Eval",
   "description": "Ruby in vs code for web",
-  "version": "0.0.5",
+  "version": "0.1.0",
   "publisher": "DmitryBarskov",
   "license": "MIT",
   "repository": {
@@ -20,13 +20,28 @@
     "commands": [
       {
         "command": "ruby-eval.runRuby",
-        "title": "Annotate (evaluate) Ruby script"
+        "title": "Annotate (run, evaluate) Ruby script"
       },
       {
         "command": "ruby-eval.clearDecorations",
         "title": "Clear Ruby script annotations (decorations)"
+      },
+      {
+        "command": "ruby-eval.resetVm",
+        "title": "Reset Ruby VM (delete all variables, methods, classes, etc.)"
       }
-    ]
+    ],
+    "configuration": {
+      "title": "Ruby Eval",
+      "type": "object",
+      "properties": {
+        "ruby-eval.rubyVersion": {
+          "type": "string",
+          "default": "3.4",
+          "description": "Ruby version to use. Can be 3.2, 3.3 or 3.4. Run \"Reset Ruby VM\" command to apply changes."
+        }
+      }
+    }
   },
   "scripts": {
     "test": "vscode-test-web --browserType=chromium --extensionDevelopmentPath=. --extensionTestsPath=dist/web/test/suite/index.js",
@@ -57,7 +72,6 @@
   },
   "dependencies": {
     "@bjorn3/browser_wasi_shim": "^0.4.1",
-    "@ruby/3.4-wasm-wasi": "^2.7.1",
     "@ruby/prism": "^1.4.0",
     "@ruby/wasm-wasi": "^2.7.1"
   }
