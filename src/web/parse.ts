@@ -16,26 +16,26 @@ export async function createParser(webAssemblyInstance: WebAssembly.Instance) {
 }
 
 export type StatementInfo = {
-	start: number;
-	end: number;
-	length: number;
-	source: string;
+  start: number;
+  end: number;
+  length: number;
+  source: string;
 };
 
 export function* statements(parse: (s: string) => any, source: string): Generator<StatementInfo, void, unknown> {
-	console.info("Finding statements...");
-	const statements = parse(source).value.statements.childNodes();
-	for (const statement of statements) {
-		if (statement === null) { continue; }
+  console.info("Finding statements...");
+  const statements = parse(source).value.statements.childNodes();
+  for (const statement of statements) {
+    if (statement === null) { continue; }
 
-		const { startOffset, length } = statement.location;
-		const statementSource: string = source.substring(startOffset, startOffset + length);
-		const statementInfo: StatementInfo = {
-			start: startOffset, end: startOffset + length,
-			length,
-			source: statementSource,
-		};
-		yield statementInfo;
-	}
-	console.info("All statements retreived.");
+    const { startOffset, length } = statement.location;
+    const statementSource: string = source.substring(startOffset, startOffset + length);
+    const statementInfo: StatementInfo = {
+      start: startOffset, end: startOffset + length,
+      length,
+      source: statementSource,
+    };
+    yield statementInfo;
+  }
+  console.info("All statements retreived.");
 }

@@ -1,26 +1,19 @@
 # Ruby Eval
 
-Web extension (works in vscode.dev and github.dev) to evaluate ruby scripts.
+Web extension (works in VS Code, vscode.dev and github.dev) to evaluate ruby scripts.
 
 ## Features
 
 - Evaluates top level statements
-- Works in browser (not in Safari/iOS)
+- Works in browser (Ruby 3.4 does not work in Safari)
 - Supports stdout
+- Supports stdin
+-
 
 ![Feature demonstration](./images/feature.png)
 
-## Requirements
-
-Node.js, npm, yarn should be installed. Run `yarn` to install dependencies.
-
 ## Extension Settings
-
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
 
 This extension contributes the following settings:
 
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
+* `ruby-eval.rubyVersion`: Sets Ruby version (3.2 or newer)

@@ -37,8 +37,8 @@
       "properties": {
         "ruby-eval.rubyVersion": {
           "type": "string",
-          "default": "3.4",
-          "description": "Ruby version to use. Can be 3.2, 3.3 or 3.4. Run \"Reset Ruby VM\" command to apply changes."
+          "default": "3.3",
+          "description": "Ruby version to use. Can be 3.2, 3.3 (default) or 3.4. Run \"Reset Ruby VM\" command to apply changes."
         }
       }
     }

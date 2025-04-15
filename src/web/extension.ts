@@ -6,16 +6,15 @@ import { RubyVM } from "@ruby/wasm-wasi";
 import { RUBY_VERSION } from './rubyVersions';
 
 import { createParser, statements } from './parse';
+import initializeRubyVm from './initializeRubyVm';
 
-import initializeRubyVM from './initializeRubyVM';
-
-function evalInVm(vm: RubyVM, source: string): {result: any, output: string | null} {
+async function evalInVm(vm: RubyVM, source: string): Promise<{result: any, output: string | null}> {
 	console.info(`Evaluating code (${source.length} chars)`);
 	console.debug(`Source: ${source}`);
 
 	try {
 		vm.eval('$captured_output = []');
-		const result = vm.eval(source).toJS();
+		const result = vm.eval(`(${source}).inspect`).toJS();
 		const outputPresent = vm.eval('$captured_output.any?').toJS();
 		let output: string | null = null;
 		if (outputPresent) {
@@ -26,6 +25,18 @@ function evalInVm(vm: RubyVM, source: string): {result: any, output: string | nu
 		console.debug(`Value = ${result}, Output = ${output}`);
 		return { result, output };
 	} catch (error) {
+		if (error instanceof Error && error.message.includes("InputRequiredError")) {
+			console.info("Input required");
+			const input = await vscode.window.showInputBox();
+			console.info({ message: `Input received: ${input}`, input });
+			const stdin = vm.eval('$stdin');
+			if (input === undefined) {
+				stdin.call('ready', vm.eval('nil'));
+			} else {
+				stdin.call('ready', vm.wrap(input));
+			}
+			return evalInVm(vm, source);
+		}
 		const outputPresent = vm.eval('$captured_output.any?').toJS();
 		let output: string | null = null;
 		if (outputPresent) {
@@ -67,12 +78,11 @@ async function initializeWebAssmebly() {
 }
 
 function readRubyVersion(): RUBY_VERSION {
-	return vscode.workspace.getConfiguration('ruby-eval')
-		.get('rubyVersion') as RUBY_VERSION ?? "3.4";
+	return vscode.workspace.getConfiguration('ruby-eval').get('rubyVersion') as RUBY_VERSION;
 }
 
 export async function activate(context: vscode.ExtensionContext) {
-	let vm = await initializeRubyVM(readRubyVersion());
+	let vm = await initializeRubyVm(readRubyVersion());
 	const webAssemblyInstance = await initializeWebAssmebly();
 	const parser = await createParser(webAssemblyInstance);
 
@@ -109,7 +119,7 @@ export async function activate(context: vscode.ExtensionContext) {
 				editor.document.positionAt(start),
 				editor.document.positionAt(end)
 			);
-			const { result, output } = evalInVm(vm, `(${source}).inspect`);
+			const { result, output } = await evalInVm(vm, source);
 			const contentText = ` => ${result}`;
 			decorations.push({
 				range, renderOptions: {
@@ -137,7 +147,7 @@ export async function activate(context: vscode.ExtensionContext) {
 
 	const resetVm = vscode.commands.registerCommand('ruby-eval.resetVm', async () => {
 		disposeDecorations();
-		vm = await initializeRubyVM(readRubyVersion());
+		vm = await initializeRubyVm(readRubyVersion());
 	});
 	context.subscriptions.push(resetVm);
 }
