@@ -219,33 +219,12 @@
   dependencies:
     playwright-core "1.51.1"
 
-"@ruby/3.2-wasm-wasi@^2.7.1":
-  version "2.7.1"
-  resolved "https://registry.npmjs.org/@ruby/3.2-wasm-wasi/-/3.2-wasm-wasi-2.7.1.tgz"
-  integrity sha512-bl5vfwalwjxFuSbdychMgSp/55OTrQ6buQBwYMPlUwVkG1YnmVQEP2iouVzrud8fCECQCzJGtX0mrHCwpgHO3g==
-  dependencies:
-    "@ruby/wasm-wasi" "^2.0.0"
-
-"@ruby/3.3-wasm-wasi@^2.7.1":
-  version "2.7.1"
-  resolved "https://registry.yarnpkg.com/@ruby/3.3-wasm-wasi/-/3.3-wasm-wasi-2.7.1.tgz#edf58018558796c397f902e6a6b89a26b795b933"
-  integrity sha512-j8k5MKQfTMuTOAObpd1pCJZmbbX7zkQzNQIQYSYDHQNs9/6RGz/p0XnoWdyO6cEFQCfewvYZoGUHTtJLKgpkUA==
-  dependencies:
-    "@ruby/wasm-wasi" "^2.0.0"
-
-"@ruby/3.4-wasm-wasi@^2.7.1":
-  version "2.7.1"
-  resolved "https://registry.yarnpkg.com/@ruby/3.4-wasm-wasi/-/3.4-wasm-wasi-2.7.1.tgz#4c42ed6521982b1ae2cde8ca0b7c870cc6d814d8"
-  integrity sha512-uPRvWNL0eR3nYV1iiuJ/QBREUCqc3QKQIJw1iDmuLjiWsftqPfLxN6t0cEtF5mOGh90EZG/NptJoJ4SlJrfzHw==
-  dependencies:
-    "@ruby/wasm-wasi" "^2.0.0"
-
 "@ruby/prism@^1.4.0":
   version "1.4.0"
   resolved "https://registry.npmjs.org/@ruby/prism/-/prism-1.4.0.tgz"
   integrity sha512-TsDZf6BzSbKvK9pAlsj9jN5B6PBHByB9dcIUctKZ2eO7p4ejz1jeyRv3mTGgNXrDCR6mVQDMSGzKKFKTD5RDCw==
 
-"@ruby/wasm-wasi@^2.0.0", "@ruby/wasm-wasi@^2.7.1":
+"@ruby/wasm-wasi@^2.7.1":
   version "2.7.1"
   resolved "https://registry.npmjs.org/@ruby/wasm-wasi/-/wasm-wasi-2.7.1.tgz"
   integrity sha512-2f4NqiJuFoeYiXNr60PH3TbH5c+z/xP2Hq36Av2yahp05AaLDyJxWZwr9EGmfoFsmVTmeDdEW2KjPTfpue6xeg==

@@ -37,8 +37,18 @@
       "properties": {
         "ruby-eval.rubyVersion": {
           "type": "string",
+          "enum": [
+            "3.2",
+            "3.3",
+            "3.4"
+          ],
           "default": "3.3",
-          "description": "Ruby version to use. Can be 3.2, 3.3 (default) or 3.4. Run \"Reset Ruby VM\" command to apply changes."
+          "description": "Ruby version to use. Can be 3.2, 3.3 (default) or 3.4. Run \"Reset Ruby VM\" command to apply changes.",
+          "enumDescriptions": [
+            "Use Ruby 3.2",
+            "Use Ruby 3.3 (default)",
+            "Use Ruby 3.4 (won't work in Safari)"
+          ]
         }
       }
     }
@@ -54,9 +64,6 @@
     "run-in-browser": "vscode-test-web --browserType=chromium --extensionDevelopmentPath=. ."
   },
   "devDependencies": {
-    "@ruby/3.2-wasm-wasi": "^2.7.1",
-    "@ruby/3.3-wasm-wasi": "^2.7.1",
-    "@ruby/3.4-wasm-wasi": "^2.7.1",
     "@types/assert": "^1.5.11",
     "@types/mocha": "^10.0.10",
     "@types/vscode": "^1.99.0",
