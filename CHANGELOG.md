@@ -7,6 +7,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 ## [0.2.0]
 
 - Added support for reading from stdin
+- Preload Ruby wasm files to work offline
 
 ## [0.1.0]
 

@@ -8,7 +8,6 @@ Web extension (works in VS Code, vscode.dev and github.dev) to evaluate ruby scr
 - Works in browser (Ruby 3.4 does not work in Safari)
 - Supports stdout
 - Supports stdin
--
 
 ![Feature demonstration](./images/feature.png)
 
