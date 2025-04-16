@@ -1,13 +1,7 @@
 export type RUBY_VERSION = "3.2" | "3.3" | "3.4";
 
-export const RUBY_VERSIONS: Record<RUBY_VERSION, { wasm: string }> = {
-  "3.4": {
-    wasm: "https://cdn.jsdelivr.net/npm/@ruby/3.4-wasm-wasi@2.7.1/dist/ruby+stdlib.wasm",
-  },
-  "3.3": {
-    wasm: "https://cdn.jsdelivr.net/npm/@ruby/3.3-wasm-wasi@2.7.1/dist/ruby+stdlib.wasm",
-  },
-  "3.2": {
-    wasm: "https://cdn.jsdelivr.net/npm/@ruby/3.2-wasm-wasi@2.7.1/dist/ruby+stdlib.wasm",
-  },
+export const RUBY_VERSIONS: Record<RUBY_VERSION, Promise<{wasm: ArrayBuffer}>> = {
+  "3.4": import("wasm-3.4"),
+  "3.3": import("wasm-3.3"),
+  "3.2": import("wasm-3.2"),
 };

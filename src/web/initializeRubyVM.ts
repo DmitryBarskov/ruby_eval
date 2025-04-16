@@ -9,11 +9,11 @@ async function initializeRubyVm(rubyVersion: RUBY_VERSION = "3.3"): Promise<Ruby
   console.info(`Using Ruby ${rubyVersion}...`);
 
   console.info("Downloading WASM module...");
-  const stdlib = await fetch(RUBY_VERSIONS[rubyVersion].wasm);
+  const stdlib = (await RUBY_VERSIONS[rubyVersion]).wasm;
   console.info("WASM module downloaded successfully.");
 
   console.info("Compiling WASM module...");
-  const module = await WebAssembly.compileStreaming(stdlib);
+  const module = await WebAssembly.compile(stdlib);
   console.info("WASM module compiled successfully.");
 
   console.info("Creating Ruby VM...");
@@ -38,12 +38,12 @@ async function initializeRubyVm(rubyVersion: RUBY_VERSION = "3.3"): Promise<Ruby
       class StdinChannel
         class InputRequiredError < StandardError; end
 
-        def obj.ready(str)
+        def ready(str)
           @ready = true
           @input = str
         end
 
-        def obj.gets
+        def gets
           if @ready
             @ready = false
             @input
@@ -52,19 +52,19 @@ async function initializeRubyVm(rubyVersion: RUBY_VERSION = "3.3"): Promise<Ruby
           end
         end
 
-        def obj.read(length = nil)
+        def read(length = nil)
           raise NotImplementedError
         end
 
-        def obj.readline
+        def readline
           raise NotImplementedError
         end
 
-        def obj.each_line(&block)
+        def each_line(&block)
           raise NotImplementedError
         end
 
-        def obj.eof?
+        def eof?
           if @ready
             @input.nil?
           else
