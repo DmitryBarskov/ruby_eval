@@ -4,6 +4,11 @@ All notable changes to the "ruby-eval" extension will be documented in this file
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+## [0.4.0]
+
+- Added navigation button to eval current script
+- Added icons
+
 ## [0.3.0]
 
 - Added more stdin methods support

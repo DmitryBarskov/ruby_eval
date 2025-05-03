@@ -2,7 +2,7 @@
   "name": "ruby-eval",
   "displayName": "Ruby Eval",
   "description": "Ruby in VS Code for web and desktop",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "publisher": "DmitryBarskov",
   "license": "MIT",
   "repository": {
@@ -14,21 +14,44 @@
   "categories": [
     "Other"
   ],
+  "icon": "images/ruby-128.png",
   "activationEvents": [],
   "browser": "./dist/web/extension.js",
   "contributes": {
+    "menus": {
+      "editor/title/run": [
+        {
+          "command": "ruby-eval.runRuby",
+          "when": "resourceLangId == ruby",
+          "group": "navigation"
+        },
+        {
+          "command": "ruby-eval.clearDecorations",
+          "when": "resourceLangId == ruby",
+          "group": "navigation"
+        },
+        {
+          "command": "ruby-eval.resetVm",
+          "when": "resourceLangId == ruby",
+          "group": "navigation"
+        }
+      ]
+    },
     "commands": [
       {
         "command": "ruby-eval.runRuby",
-        "title": "Annotate (run, evaluate) Ruby script"
+        "title": "Annotate (run, evaluate) Ruby script",
+        "icon": "$(debug-start)"
       },
       {
         "command": "ruby-eval.clearDecorations",
-        "title": "Clear Ruby script annotations (decorations)"
+        "title": "Clear Ruby script annotations (decorations)",
+        "icon": "$(trash)"
       },
       {
         "command": "ruby-eval.resetVm",
-        "title": "Reset Ruby VM (delete all variables, methods, classes, etc.)"
+        "title": "Reset Ruby VM (delete all variables, etc.)",
+        "icon": "$(refresh)"
       }
     ],
     "configuration": {
