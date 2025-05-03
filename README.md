@@ -5,8 +5,7 @@ Web extension (works in VS Code, vscode.dev and github.dev) to evaluate ruby scr
 ## Features
 
 - Evaluates top level statements
-- Based on [ruby.wasm](https://github.com/ruby/ruby.wasm)
-- Works in browser (Ruby 3.4 does not work in Safari)
+- Works in a browser (Ruby 3.4 does not work in Safari)
 - Supports stdout/stdin
 
 ![Feature demonstration](./images/feature.png)

@@ -4,6 +4,14 @@ All notable changes to the "ruby-eval" extension will be documented in this file
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+## [0.4.2]
+
+- Fixed README.md
+
+## [0.4.1]
+
+- Added technologies to README.md
+
 ## [0.4.0]
 
 - Added navigation button to eval current script
